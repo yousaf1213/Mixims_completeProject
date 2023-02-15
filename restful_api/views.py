@@ -2,12 +2,12 @@ from django.shortcuts import render
 
 from rest_framework import permissions
 from rest_framework.views import APIView
-from .models import Product
+from .models import Product,User
 from rest_framework.decorators import api_view
 from django.views import View
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer,UserSerializer
 from rest_framework.response import Response
 from rest_framework import generics
 
@@ -50,7 +50,20 @@ class SnippetList(APIView):
 #     return Response(serializer.data)
 
 
-class GenericViews(generics.ListCreateAPIView, generics.CreateAPIView, generics.DestroyAPIView,generics.UpdateAPIView):
+class GenericViews( generics.DestroyAPIView,generics.UpdateAPIView,generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    lookup_field = 'Product_name'
+    lookup_field = 'pk'
+
+class GetorInsertProduct( generics.ListCreateAPIView, generics.CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class GetorInsertUser( generics.ListCreateAPIView, generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserCrud( generics.DestroyAPIView,generics.UpdateAPIView,generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'pk'
