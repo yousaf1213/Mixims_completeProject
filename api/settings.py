@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-6-)i7d1j2j*^=m4wv0tj%2o%_@#3gwblb-(-w8uq(cc8$e6=v0
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# Celery configuration
 
 
 # Application definition
@@ -117,6 +118,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '3619daa3d21b6f'
+EMAIL_HOST_PASSWORD = 'b37d9047fe4db6'
+EMAIL_PORT = '2525'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

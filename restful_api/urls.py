@@ -8,6 +8,8 @@ urlpatterns = [
     path('GetorInsertProduct/', views.GetorInsertProduct.as_view()),
     path('GetorInsertUser/', views.GetorInsertUser.as_view()),
     path('UserCrud/<int:pk>', views.UserCrud.as_view()),
+    path("fakeinsert/", views.AsyncInsertUsingThread),
+    path("webscrapp/", views.WebScrapp),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
